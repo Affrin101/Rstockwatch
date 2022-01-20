@@ -1,16 +1,22 @@
 Package: Rstockwatch
-Title: What the Package Does (One Line, Title Case)
+Title: Make simple visualization of stock data
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(person(given = "Affrin",
+           family = "Sultana",
+           role = c("aut", "cre")), 
+	person(given = "Helin ",
+           family = "Wang",
+           role = c("aut", "cre")), 
+	person(given = "Pavel",
+           family = "Levchenko",
+           role = c("aut", "cre")), 
+	person(given = "Shi Yan",
+           family = "Wang",
+           role = c("aut", "cre")))
+Description: Main idea of the package is to provide a very simple interface for checking movements in stock prices in comparison to the market. This will be implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, such as SP500 or NASDAQ. As a result of data processing with pystockwatch package, user will be able to see a plot with two lines showing percentage change since the start date and volumes of trading
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
