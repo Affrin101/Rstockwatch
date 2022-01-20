@@ -19,6 +19,3 @@ A bar plot with trading volumes
 \description{
 Visualizes the daily trading volume of a stock using bar plot within a given period of time
 }
-\examples{
-volume_viz('AAPL', '2021-01-01', '2022-01-01')
-}

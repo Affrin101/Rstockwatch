@@ -36,9 +36,6 @@ volume_change <- function(stock_ticker, start_date, end_date){
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #' @return A bar plot with trading volumes
-#'
-#' @examples
-#' volume_viz('AAPL', '2021-01-01', '2022-01-01')
 volume_viz <- function(stock_ticker, start_date, end_date){
 	print('TODO')
 }
