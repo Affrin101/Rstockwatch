@@ -1,9 +1,21 @@
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
-#' @param stock_ticker
-#' @param start_date
-#' @param end_date
-
+#' @param stock_ticker Ticker of the stock such as 'AAPL', or 'AAPL MSFT SPY' for multiple tickers
+#' @param start_date Initial date for data extraction
+#' @param end_date Final date for stock analysis
+#'
+#' @return A data frame with dates and their corresponding stock price percentage changes
+#' @export
+#'
+#' @examples
+#'         percent_change('AAPL', '2017-01-01', '2017-01-10')
+#'                     Price Change Percentage(%)
+#'               Date
+#'         2017-01-03                      0.0000
+#'         2017-01-04                     -0.1119
+#'         2017-01-05                      0.3960
+#'         2017-01-06                      1.5153
+#'         2017-01-09                      2.4451
 percent_change <- function(stock_ticker, start_date, end_date){
 	print('TODO')
 }
