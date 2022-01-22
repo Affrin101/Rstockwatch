@@ -39,9 +39,15 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 
 #' Calculates the daily trading volume change status of a stock within a given period of time
 #'
-#' @param stock_ticker
-#' @param start_date
-#' @param end_date
+#' @param stock_ticker A string Ticker of the stock such as 'AAPL'
+#' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
+#' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
+#' 
+#' @return A data frame with dates and their corresponding trading volume and changes
+#' @export
+#'
+#' @examples
+#'         volume_change('AAPL', '2021-01-01', '2022-01-01')
 volume_change <- function(stock_ticker, start_date, end_date){
 	print('TODO')
 }
