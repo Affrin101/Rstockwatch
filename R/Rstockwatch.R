@@ -23,10 +23,15 @@ percent_change <- function(stock_ticker, start_date, end_date){
 
 #' Visualizes trend of a stock price change against the market benchmark within a given period of time
 #'
-#' @param stock_ticker
-#' @param start_date
-#' @param end_date
-#' @param benchmark_ticker
+#' @param stock_ticker A string Ticker of the stock such as 'AAPL'
+#' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
+#' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
+#' @param benchmark_ticker A string Benchmark Ticker of the stock such as 'SPY'
+#' @return A line plot showing the profit percent trend of the stock price change against the market benchmark within a given period of time
+#' @export
+#'
+#' @examples
+#'         profit_viz('AAPL', '2017-01-01', '2017-01-10','SPY')
 profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 	print('TODO')
 }
