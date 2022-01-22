@@ -1,8 +1,8 @@
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
-#' @param stock_ticker Ticker of the stock such as 'AAPL', or 'AAPL MSFT SPY' for multiple tickers
-#' @param start_date Initial date for data extraction
-#' @param end_date Final date for stock analysis
+#' @param stock_ticker A string related to ticker of the stock or ETF
+#' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
+#' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #'
 #' @return A data frame with dates and their corresponding stock price percentage changes
 #' @export
@@ -33,9 +33,9 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 
 #' Calculates the daily trading volume change status of a stock within a given period of time
 #'
-#' @param stock_ticker Ticker of the stock such as 'AAPL', or 'AAPL MSFT SPY' for multiple tickers
-#' @param start_date Initial date for data extraction
-#' @param end_date Final date for stock analysis
+#' @param stock_ticker A string related to ticker of the stock or ETF
+#' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
+#' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #'
 #' @return A data frame with dates and their corresponding trading volume and changes
 #' @export
