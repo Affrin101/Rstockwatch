@@ -59,7 +59,10 @@ Usage clarification will be updated after completion of all functions.
 In general, after installation of this package user will be required to
 input four parameters: stock_ticker, start_date, end_date and
 benchmark_ticker. Output results will be in form of an plot based on
-“ggplot” package. (Image)(!)
+“ggplot” package.
+
+![Lineplot](https://github.com/UBC-MDS/Rstockwatch/blob/main/Line_plot.PNG)
+
 
 ## Contributors
 
@@ -80,7 +83,7 @@ terms.
 
     > testthat (>= 3.0.0)
 
-    > ggplot
+    > ggplot2==3.3.5
 
 ## License
 
