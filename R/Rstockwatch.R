@@ -66,10 +66,18 @@ volume_viz <- function(stock_ticker, start_date, end_date){
 	df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
 	dfout <- df |>
 	   mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase"))
+	   
+	options(repr.plot.width=15, repr.plot.height=8)
 	volume_plot <- ggplot(data=dfout, aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
 		  geom_bar(stat="identity", position ="identity") +
 		  scale_colour_manual(values=c("firebrick2", "darkgreen")) +
 		  scale_fill_manual(values=c("firebrick2", "darkgreen")) + 
-		  theme_bw()
+		  labs(x = '',
+			   y = "Volume") +
+		  theme(text = element_text(size=20), 
+				plot.background = element_rect(fill = 'white', colour = 'white'), 
+				panel.background = element_rect(fill = "white",
+										colour = "white"))
+
 	return(volume_plot)
 }
