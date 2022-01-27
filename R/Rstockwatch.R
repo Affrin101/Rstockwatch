@@ -70,7 +70,10 @@ volume_viz <- function(stock_ticker, start_date, end_date){
 	   
 	# dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
 				      # error = return('Something wrong with input from volume_change function'))
-	   
+	if(!is.numeric(dfout$volume)) {
+		stop("Volume data should be numeric")
+	}   
+	
 	options(repr.plot.width=15, repr.plot.height=8)
 	volume_plot <- ggplot(data=dfout, aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
 		  geom_bar(stat="identity", position ="identity") +
