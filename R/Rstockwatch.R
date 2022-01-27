@@ -1,3 +1,7 @@
+library(tidyverse)
+library(tidyquant)
+
+
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
 #' @param stock_ticker A string related to ticker of the stock or ETF
