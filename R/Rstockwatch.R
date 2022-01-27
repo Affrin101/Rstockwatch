@@ -65,7 +65,11 @@ volume_change <- function(stock_ticker, start_date, end_date){
 volume_viz <- function(stock_ticker, start_date, end_date){
 	df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
 	dfout <- df |>
-	   mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase"))
+	   mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
+	   select(date, volume, Price_change)
+	   
+	# dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
+				      # error = return('Something wrong with input from volume_change function'))
 	   
 	options(repr.plot.width=15, repr.plot.height=8)
 	volume_plot <- ggplot(data=dfout, aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
