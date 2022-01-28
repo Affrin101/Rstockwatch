@@ -48,6 +48,16 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
 	print('TODO')
+	
+	
+	
+	# Left this for reference. I used this for function 4. Could delete and rewrite as you wish, just want to be sure that column names and format is same for input of the next function:
+	
+	# df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
+	# dfout <- df |>
+	   # mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
+	   # select(date, volume, Price_change)
+	# return dfout
 }
 
 
@@ -63,13 +73,9 @@ volume_change <- function(stock_ticker, start_date, end_date){
 #' @examples
 #'         volume_viz('AAPL', '2017-01-01', '2017-01-10')
 volume_viz <- function(stock_ticker, start_date, end_date){
-	df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
-	dfout <- df |>
-	   mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
-	   select(date, volume, Price_change)
-	   
-	# dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
-				      # error = return('Something wrong with input from volume_change function'))
+  
+	dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
+				      error = return('Something wrong with input from volume_change function'))
 	if(!is.numeric(dfout$volume)) {
 		stop("Volume data should be numeric")
 	}   
