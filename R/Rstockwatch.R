@@ -28,7 +28,17 @@ percent_change <- function(stock_ticker, start_date, end_date){
   }
   
   if(!stock_ticker %in% sp600_tickers_list) {
-    stop("Invalid stock_ticker!")
+    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
+  }
+
+  # Check if date is in correct time format
+  # start_date
+  if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
+		stop("Invalid start date! Start date should be in format yyyy-mm-dd")
+  }
+  # end_date
+  if(is.na(as.Date(end_date, format = '%Y-%m-%d'))) {
+		stop("Invalid end date! End date should be in format yyyy-mm-dd")
   }
 
   # Import data frame
