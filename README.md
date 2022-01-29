@@ -6,18 +6,47 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Rstockwatch is to …
+The goal of Rstockwatch package is to provide a very simple interface
+for checking movements in stock prices in comparison to the market. This
+is implemented by accessing public data from Yahoo Finance by selecting
+a ticker of the stock, range of start and end dates and benchmark for
+comparison, such as SP500 or NASDAQ. As a result of data processing with
+pystockwatch package, user will be able to see a plot with two lines
+showing percentage change since the start date and volumes of trading.
+
+## Functions
+
+This package is built with following four functions:  
+- `percent_change` Calculation of profit percentage change of a stock
+for a given period of time based on data extracted from Yahoo finance.  
+- `profit_viz` Visualization of profit percentage change trend of a
+stock against market benchmark for a given period of time. Note that
+during weekends and public holidays, stock market has no data available,
+this is handled in plotting as well  
+- `volume_change` Calculation of daily trading volume change of a stock,
+whether it is increasing or decreasing. This data is used in next
+function for color mapping of bar plot.  
+- `volume_viz` Visualization of trading volume as bar plots colored by
+changes in volume in comparison with previous day. This plot is
+overlayed with line plots created with the second function. . Note that
+during weekends and public holidays, stock market has no data available,
+this is handled in plotting as well
+
+## Comparison with similar packages in R Ecosystem
+
+There are many packages written for analysis of stock data. One of the
+most popular R package in this category is
+[stockAnalyzer](https://github.com/UBC-MDS/stockAnalyzer), which gives a
+lot of manipulations with time series data, such as creating moving
+averages of stock price or calculating hundreds of parameters for
+technical analysis. Power of `Rstockwatch` is in its simplicity, so
+users are not overwhelmed with all extra features and just have a simple
+view with key comparisons for a stock of interest
 
 ## Installation
 
-You can install the released version of Rstockwatch from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("Rstockwatch")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/UBC-MDS/Rstockwatch) with:
 
 ``` r
 # install.packages("devtools")
@@ -26,36 +55,38 @@ devtools::install_github("UBC-MDS/Rstockwatch")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Usage clarification will be updated after completion of all functions.
+In general, after installation of this package user will be required to
+input four parameters: stock_ticker, start_date, end_date and
+benchmark_ticker. Output results will be in form of an plot based on
+“ggplot” package.
 
-``` r
-library(Rstockwatch)
-## basic example code
-```
+![Lineplot](https://github.com/UBC-MDS/Rstockwatch/blob/main/Line_plot.PNG)
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+## Contributors
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang.
 
-You can also embed plots, for example:
+We welcome and recognize all contributions. Check out the contributing
+guidelines. Please note that this project is released with a Code of
+Conduct. By contributing to this project, you agree to abide by its
+terms.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+## Dependencies
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+-   R Version 4.1 or above
+
+    > tidyverse==1.3.1
+
+    > knitr==1.36
+
+    > testthat (>= 3.0.0)
+
+    > ggplot2==3.3.5
+
+## License
+
+`Rstockwatch` was created by Affrin Sultana, Helin Wang, Pavel
+Levchenko, Shi Yan Wang. It is licensed under the terms of the MIT
+license.
