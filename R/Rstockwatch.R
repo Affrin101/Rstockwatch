@@ -1,7 +1,6 @@
 library(tidyverse)
 library(tidyquant)
 
-
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
 #' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
@@ -61,7 +60,7 @@ percent_change3 <- function(stock_ticker, start_date, end_date){
 
 #' Visualizes trend of a stock price change against the market benchmark within a given period of time
 #'
-#' @param stock_ticker A string Ticker of the stock such as 'AAPL'
+#' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #' @param benchmark_ticker A string Benchmark Ticker of the stock such as 'SPY'
@@ -78,7 +77,7 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 
 #' Calculates the daily trading volume change status of a stock within a given period of time
 #'
-#' @param stock_ticker A string Ticker of the stock such as 'AAPL'
+#' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #' 
@@ -88,7 +87,6 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 #' @examples
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
-    
   # Check if stock_ticker is valid in SP500 index
   sp600_tickers_list <- c(tq_index("SP500")$symbol)
 
@@ -125,7 +123,7 @@ volume_change <- function(stock_ticker, start_date, end_date){
 
 #' Visualizes the daily trading volume of a stock using bar plot within a given period of time
 #'
-#' @param stock_ticker A string related to ticker of the stock or ETF
+#' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #'
@@ -135,24 +133,23 @@ volume_change <- function(stock_ticker, start_date, end_date){
 #' @examples
 #'         volume_viz('AAPL', '2017-01-01', '2017-01-10')
 volume_viz <- function(stock_ticker, start_date, end_date){
-  
-	dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
-				      error = return('Something wrong with input from volume_change function'))
-	if(!is.numeric(dfout$volume)) {
-		stop("Volume data should be numeric")
-	}   
-	
-	options(repr.plot.width=15, repr.plot.height=8)
-	volume_plot <- ggplot(data=dfout, aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
-		  geom_bar(stat="identity", position ="identity") +
-		  scale_colour_manual(values=c("firebrick2", "darkgreen")) +
-		  scale_fill_manual(values=c("firebrick2", "darkgreen")) + 
-		  labs(x = '',
-			   y = "Volume") +
-		  theme(text = element_text(size=20), 
-				plot.background = element_rect(fill = 'white', colour = 'white'), 
-				panel.background = element_rect(fill = "white",
-										colour = "white"))
-
-	return(volume_plot)
+    # Check input
+    dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
+                      error = return('Something wrong with input from volume_change function'))
+    if(!is.numeric(dfout$volume)) {
+        stop("Volume data should be numeric")}   
+    
+    options(repr.plot.width=15, repr.plot.height=8)
+    volume_plot <- ggplot(data=dfout, 
+                          aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
+    geom_bar(stat="identity", position ="identity") +
+    scale_colour_manual(values=c("firebrick2", "darkgreen")) +
+    scale_fill_manual(values=c("firebrick2", "darkgreen")) + 
+    labs(x = '',
+         y = "Volume") +
+    theme(text = element_text(size=20), 
+          plot.background = element_rect(fill = 'white', colour = 'white'), 
+          panel.background = element_rect(fill = "white",colour = "white"))
+    
+    return(volume_plot)
 }
