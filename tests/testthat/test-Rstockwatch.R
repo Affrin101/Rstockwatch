@@ -12,3 +12,8 @@ test_that("Error of start_date format", {
 test_that("Error of end_date format", {
   expect_error(percent_change("AAPL", "2017-01-01", "2017/01/10"))
 })
+
+# Test output is data frame
+test_that("Output is a data frame", {
+  expect_true(is.data.frame(percent_change("AAPL", "2017-01-01", "2017-01-10")))
+})
