@@ -36,12 +36,12 @@ this is handled in plotting as well
 
 There are many packages written for analysis of stock data. One of
 relevant R package in this category is
-[stockAnalyzer](https://github.com/UBC-MDS/stockAnalyzer), which allows
-a lot of manipulations with time series data, such as creating moving
-averages or calculating other parameters for technical analysis. Power
-of `Rstockwatch` is in its simplicity, so users are not overwhelmed with
-all extra features and just have a simple view with key comparisons for
-a stock of interest
+[quantmod](https://cran.r-project.org/web/packages/quantmod), which
+allows a lot of manipulations with time series data, such as creating
+moving averages or calculating other parameters for technical analysis.
+Power of `Rstockwatch` is in its simplicity, so users are not
+overwhelmed with all extra features and just have a simple view with key
+comparisons for a stock of interest
 
 ## Installation
 
@@ -53,18 +53,46 @@ You can install the development version from
 devtools::install_github("UBC-MDS/Rstockwatch")
 ```
 
-## Example
+## Usage and Example
 
-Usage clarification will be updated after completion of all functions.
-In general, after installation of this package user will be required to
-input four parameters: stock_ticker, start_date, end_date and
-benchmark_ticker. Output results are in form of an plot based on
-“ggplot” package. ![Volume
-visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.PNG)
+After the successful installation of this package user are recommend to
+restart the R session to update any dependencies packages. The functions
+in this package require input four parameters: `stock_ticker`,
+`start_date`, `end_date` and `benchmark_ticker`. Output results are in
+form of an plot based on “ggplot” package.
+
+Import the functions from package with following commands:
+
+    library(rstockwatch)
+
+### To check the Profit percent
+
+    percent_change('AAPL', '2017-01-01', 2021-12-31')
+
+### To Visualize the profit percentage change trend of a stock against market benchmark
+
+    profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SP500')
+
+![Profit
+visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png)
+
+### To check daily trading volume change of a stock
+
+    volume_change('AAPL', '2021-01-01', 2021-12-31')
+
+### To Visualize the volume change trend of a stock
+
+    volume_viz('AAPL', '2021-01-01', 2021-12-31')
+
+![Volume
+visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png)
 
 ## Contributors
 
-Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang.
+-   Affrin Sultana
+-   Helin Wang
+-   Pavel Levchenko
+-   Shi Yan Wang.
 
 We welcome and recognize all contributions. Check out the contributing
 guidelines. Please note that this project is released with a Code of
