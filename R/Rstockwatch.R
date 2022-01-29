@@ -13,7 +13,6 @@ library(tidyquant)
 #'
 #' @examples
 #' 	percent_change("AAPL", "2017-01-01", "2017-01-10")
-
 percent_change3 <- function(stock_ticker, start_date, end_date){  
   # Check if stock_ticker is valid in SP500 index
   sp600_tickers_list <- c(tq_index("SP500")$symbol)
@@ -89,19 +88,40 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 #' @examples
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
-	print('TODO')
-	
-	
-	
-	# Left this for reference. I used this for function 4. Could delete and rewrite as you wish, just want to be sure that column names and format is same for input of the next function:
-	
-	# df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
-	# dfout <- df |>
-	   # mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
-	   # select(date, volume, Price_change)
-	# return dfout
-}
+    
+  # Check if stock_ticker is valid in SP500 index
+  sp600_tickers_list <- c(tq_index("SP500")$symbol)
 
+  if(str_detect(stock_ticker, "[[:upper:]]") == FALSE){
+    stock_ticker <- toupper(stock_ticker)
+  }
+  
+  if(!stock_ticker %in% sp600_tickers_list) {
+    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
+  }
+    
+  # Check if date is in correct time format
+  # start_date
+  if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
+    stop("Invalid start date! Start date should be in format yyyy-mm-dd")
+  }
+  # end_date
+  if(is.na(as.Date(end_date, format = '%Y-%m-%d'))) {
+    stop("Invalid end date! End date should be in format yyyy-mm-dd")
+  }
+  
+  # Import data
+  data <- tq_get(stock_ticker,
+                 from = start_date,
+                 to = end_date,
+                 get = "stock.prices")  %>% 
+    mutate(adjusted.prior = lag(adjusted)) %>% 
+    mutate(Price_change = adjusted - adjusted.prior) %>% 
+    mutate(Price_change = ifelse(Price_change > 0, "Increase", "Decrease")) %>% 
+    select(date, volume, Price_change)
+    
+  return(data)
+}
 
 #' Visualizes the daily trading volume of a stock using bar plot within a given period of time
 #'
