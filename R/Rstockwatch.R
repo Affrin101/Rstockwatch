@@ -1,3 +1,7 @@
+library(tidyverse)
+library(tidyquant)
+
+
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
 #' @param stock_ticker A string related to ticker of the stock or ETF
@@ -44,6 +48,16 @@ profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
 	print('TODO')
+	
+	
+	
+	# Left this for reference. I used this for function 4. Could delete and rewrite as you wish, just want to be sure that column names and format is same for input of the next function:
+	
+	# df <- tq_get(stock_ticker, from = start_date, to = end_date, get = "stock.prices")
+	# dfout <- df |>
+	   # mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
+	   # select(date, volume, Price_change)
+	# return dfout
 }
 
 
@@ -59,5 +73,24 @@ volume_change <- function(stock_ticker, start_date, end_date){
 #' @examples
 #'         volume_viz('AAPL', '2017-01-01', '2017-01-10')
 volume_viz <- function(stock_ticker, start_date, end_date){
-	print('TODO')
+  
+	dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date), 
+				      error = return('Something wrong with input from volume_change function'))
+	if(!is.numeric(dfout$volume)) {
+		stop("Volume data should be numeric")
+	}   
+	
+	options(repr.plot.width=15, repr.plot.height=8)
+	volume_plot <- ggplot(data=dfout, aes(x=date, y=volume, fill=Price_change, color=Price_change)) +
+		  geom_bar(stat="identity", position ="identity") +
+		  scale_colour_manual(values=c("firebrick2", "darkgreen")) +
+		  scale_fill_manual(values=c("firebrick2", "darkgreen")) + 
+		  labs(x = '',
+			   y = "Volume") +
+		  theme(text = element_text(size=20), 
+				plot.background = element_rect(fill = 'white', colour = 'white'), 
+				panel.background = element_rect(fill = "white",
+										colour = "white"))
+
+	return(volume_plot)
 }

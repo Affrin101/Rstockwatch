@@ -11,7 +11,7 @@ for checking movements in stock prices in comparison to the market. This
 is implemented by accessing public data from Yahoo Finance by selecting
 a ticker of the stock, range of start and end dates and benchmark for
 comparison, such as SP500 or NASDAQ. As a result of data processing with
-pystockwatch package, user will be able to see a plot with two lines
+Rstockwatch package, user will be able to see a plot with two lines
 showing percentage change since the start date and volumes of trading.
 
 ## Functions
@@ -34,14 +34,14 @@ this is handled in plotting as well
 
 ## Comparison with similar packages in R Ecosystem
 
-There are many packages written for analysis of stock data. One of the
-most popular R package in this category is
-[stockAnalyzer](https://github.com/UBC-MDS/stockAnalyzer), which gives a
-lot of manipulations with time series data, such as creating moving
-averages of stock price or calculating hundreds of parameters for
-technical analysis. Power of `Rstockwatch` is in its simplicity, so
-users are not overwhelmed with all extra features and just have a simple
-view with key comparisons for a stock of interest
+There are many packages written for analysis of stock data. One of
+relevant R package in this category is
+[stockAnalyzer](https://github.com/UBC-MDS/stockAnalyzer), which allows
+a lot of manipulations with time series data, such as creating moving
+averages or calculating other parameters for technical analysis. Power
+of `Rstockwatch` is in its simplicity, so users are not overwhelmed with
+all extra features and just have a simple view with key comparisons for
+a stock of interest
 
 ## Installation
 
@@ -58,11 +58,9 @@ devtools::install_github("UBC-MDS/Rstockwatch")
 Usage clarification will be updated after completion of all functions.
 In general, after installation of this package user will be required to
 input four parameters: stock_ticker, start_date, end_date and
-benchmark_ticker. Output results will be in form of an plot based on
-“ggplot” package.
-
-![Lineplot](https://github.com/UBC-MDS/Rstockwatch/blob/main/Line_plot.PNG)
-
+benchmark_ticker. Output results are in form of an plot based on
+“ggplot” package. ![Volume
+visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.PNG)
 
 ## Contributors
 
@@ -83,7 +81,9 @@ terms.
 
     > testthat (>= 3.0.0)
 
-    > ggplot2==3.3.5
+    > ggplot2 ==3.3.5
+
+    > tidyquant ==1.0.3
 
 ## License
 
