@@ -24,9 +24,14 @@ test_that("percent_change is numeric value", {
   expect_true(is.numeric(percent_change("AAPL", "2017-01-01", "2017-01-10")$percent_change))
 
 
-
-
-
+test_that("volume change returns a data frame with correct information", {
+    vdf <- volume_change('AAPL', '2017-01-01', '2017-01-10')
+    expect_true(is.data.frame(vdf))  # Input data should be dataframe
+    expect_true("date" %in% colnames(vdf))
+    expect_true("volume" %in% colnames(vdf))
+    expect_true("Price_change" %in% colnames(vdf))
+    unique(vdf[["Price_change"]]) %in% c(NA, "Increase", "Decrease")
+  })
 
 
 test_that("volume_viz is correct", {
