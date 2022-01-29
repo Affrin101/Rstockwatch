@@ -12,11 +12,7 @@ library(tidyquant)
 #' @export
 #'
 #' @examples
-#'
-#' library(tidyverse)
-#' library(tidyquant)
-#'
-#' percent_change("AAPL", "2017-01-01", "2017-01-10")
+#' 	percent_change("AAPL", "2017-01-01", "2017-01-10")
 
 percent_change3 <- function(stock_ticker, start_date, end_date){  
   # Check if stock_ticker is valid in SP500 index
