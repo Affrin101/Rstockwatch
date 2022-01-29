@@ -20,6 +20,17 @@ library(tidyquant)
 #'         2017-01-06                        1.52
 #'         2017-01-09                        2.45
 percent_change <- function(stock_ticker, start_date, end_date){  
+  # Check if stock_ticker is valid in SP500 index
+  sp600_tickers_list <- c(tq_index("SP500")$symbol)
+  
+  if(str_detect(stock_ticker, "[[:upper:]]") == FALSE){
+    stock_ticker <- toupper(stock_ticker)
+  }
+  
+  if(!stock_ticker %in% sp600_tickers_list) {
+    stop("Invalid stock_ticker!")
+  }
+
   # Import data frame
   data <- tq_get(stock_ticker,
                from = start_date,
@@ -31,7 +42,7 @@ percent_change <- function(stock_ticker, start_date, end_date){
 
   for (i in 1:length(data$close)) {
     out = (data$close[i] - data$close[1])/data$close[1]
-    percent_change_list <- c(percent_change_list, round(out, 2))
+    percent_change_list <- c(percent_change_list, round(out, 3))
   }
 
   data$percent_change <- percent_change_list
