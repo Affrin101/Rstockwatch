@@ -77,34 +77,60 @@ percent_change <- function(stock_ticker, start_date, end_date){
 #' @export
 #'
 #' @examples
-#'         profit_viz('AAPL', '2017-01-01', '2017-01-10','SPY')
+#'         profit_viz('AAPL', '2017-01-01', '2022-01-10','SPY')
 profit_viz <- function(stock_ticker, start_date, end_date, benchmark_ticker){
 
- profit_stock <- tryCatch(percent_change(stock_ticker, start_date, end_date),
-                    error = return('Percent change function didnot work'))
-  if(!is.numeric(profit$percent_change)) {
-    stop("Profit Percent data should be numeric")
+
+  #Exception handling for input datatypes
+
+  if (!is.character(stock_ticker)) {
+    stop("stock_ticker should be a string!")
   }
+
+  if (!is.character(benchmark_ticker)) {
+    stop("benchmark_ticker should be a string!")
+  }
+
+  # Check if date is in correct time format
+  # start_date
+  if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
+    stop("Invalid start date! Start date should be in format yyyy-mm-dd")
+  }
+  # end_date
+  if(is.na(as.Date(end_date, format = '%Y-%m-%d'))) {
+    stop("Invalid end date! End date should be in format yyyy-mm-dd")
+  }
+
+
+  profit_stock <- percent_change(stock_ticker, start_date, end_date)
 
   profit_bm <-  percent_change(benchmark_ticker, start_date, end_date)
 
   profit <- merge(profit_stock, profit_bm, by="date")
+  colnames(profit) <- c("Date", "StockProfit", "BenchmarkProfit")
 
-  profit <- melt(profit, id.vars="date")
+  profit <- melt(profit, id.vars="Date")
+
+  if (!is.data.frame(profit)) {
+    stop("profit should be a DataFrame!")
+  }
+
+
 
   options(repr.plot.width=15, repr.plot.height=8)
 
-  profit_plot <- ggplot(data=profit, aes(x=date, y= value, color = variable)) +
+  profit_plot <- ggplot(data=profit, aes(x=Date, y= value, colour = variable)) +
     geom_line() +
     scale_colour_manual(values=c("firebrick2", "darkgreen")) +
     scale_fill_manual(values=c("firebrick2", "darkgreen")) +
+    scale_size(range = c(0, 100)) +
+    ggtitle('Line chart of Stock Ticker vs Benchmark Ticker') +
     labs(x = 'Date',
-         y = "profit Percent") +
+         y = "Profit Percent") +
     theme(text = element_text(size=20),
           plot.background = element_rect(fill = 'white', colour = 'white'),
           panel.background = element_rect(fill = "white",
                                           colour = "white"))
-
   return(profit_plot)
 
 }
