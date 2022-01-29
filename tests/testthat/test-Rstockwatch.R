@@ -28,16 +28,16 @@ test_that("percent_change is numeric value", {
 results <- profit_viz(profit_viz("AAPL", "2017-01-01", "2022-01-10", "MSFT"))
 
 test_that('Plot should use GeomLine and map Date to x-axis and map value to y-axis ', {
-  expect_true( "GeomLine" %in% class(results$layers[[1]]$geom))
-  expect_true("Date" == rlang::get_expr(results$mapping$x))
-  expect_true("value" == rlang::get_expr(results$mapping$y))
+  expect_true( "GeomLine" %in% class(results$layers[[1]]$geom))    # profit_viz should be line chart
+  expect_true("Date" == rlang::get_expr(results$mapping$x))        # X axis should correspond to "Date"
+  expect_true("value" == rlang::get_expr(results$mapping$y))       # Y axis should correspond to "value"
 })
 
 # Test for checking output of checking correct labels of profit viz output
 test_that('The labels are not mapped correctly', {
-  expect_true("Date"== results$label$x)
-  expect_true("Profit Percent" == results$label$y)
-  expect_true("Line chart of Stock Ticker vs Benchmark Ticker" == results$label$title)
+  expect_true("Date"== results$label$x)                             # x axis should have label to "Date"
+  expect_true("Profit Percent" == results$label$y)                  # Y axis should have label to "Profit Percent"
+  expect_true("Line chart of Stock Ticker vs Benchmark Ticker" == results$label$title)  #Title should match
   expect_true("variable" == results$label$colour)
 })
 
