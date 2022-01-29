@@ -22,11 +22,24 @@ test_that("Output is a data frame", {
 # Test percent_change column is numeric value
 test_that("percent_change is numeric value", {
   expect_true(is.numeric(percent_change("AAPL", "2017-01-01", "2017-01-10")$percent_change))
+})
 
+# Test for checking output of profit viz
+results <- profit_viz(profit_viz("AAPL", "2017-01-01", "2022-01-10", "MSFT"))
 
+test_that('Plot should use GeomLine and map Date to x-axis and map value to y-axis ', {
+  expect_true( "GeomLine" %in% class(results$layers[[1]]$geom))
+  expect_true("Date" == rlang::get_expr(results$mapping$x))
+  expect_true("value" == rlang::get_expr(results$mapping$y))
+})
 
-
-
+# Test for checking output of checking correct labels of profit viz output
+test_that('The labels are not mapped correctly', {
+  expect_true("Date"== results$label$x)
+  expect_true("Profit Percent" == results$label$y)
+  expect_true("Line chart of Stock Ticker vs Benchmark Ticker" == results$label$title)
+  expect_true("variable" == results$label$colour)
+})
 
 
 test_that("volume_viz is correct", {
