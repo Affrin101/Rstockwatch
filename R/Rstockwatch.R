@@ -1,6 +1,9 @@
+library(tidyverse)
+library(tidyquant)
+
 #' Calculates daily percentage change of a stock price within a given period of time
 #'
-#' @param stock_ticker Ticker of the stock such as 'AAPL', or 'AAPL MSFT SPY' for multiple tickers
+#' @param stock_ticker Ticker of the stock such as 'AAPL'
 #' @param start_date Initial date for data extraction
 #' @param end_date Final date for stock analysis
 #'
@@ -8,16 +11,36 @@
 #' @export
 #'
 #' @examples
-#'         percent_change('AAPL', '2017-01-01', '2017-01-10')
+#'         percent_change("AAPL", "2017-01-01", "2017-01-10")
 #'                     Price Change Percentage(%)
 #'               Date
-#'         2017-01-03                      0.0000
-#'         2017-01-04                     -0.1119
-#'         2017-01-05                      0.3960
-#'         2017-01-06                      1.5153
-#'         2017-01-09                      2.4451
-percent_change <- function(stock_ticker, start_date, end_date){
-	print('TODO')
+#'         2017-01-03                        0.00
+#'         2017-01-04                       -0.11
+#'         2017-01-05                        0.40
+#'         2017-01-06                        1.52
+#'         2017-01-09                        2.45
+percent_change <- function(stock_ticker, start_date, end_date){  
+  # Import data frame
+  data <- tq_get(stock_ticker,
+               from = start_date,
+               to = end_date,
+               get = "stock.prices")
+  
+  # Calculate percent_change value based on close price
+  percent_change_list <- c()
+
+  for (i in 1:length(data$close)) {
+    out = (data$close[i] - data$close[1])/data$close[1]
+    percent_change_list <- c(percent_change_list, round(out, 2))
+  }
+
+  data$percent_change <- percent_change_list
+  
+  # Only keep columns of date and percent_change
+  data <- data |> 
+    select(date, percent_change)
+  
+  return(data)
 }
 
 
