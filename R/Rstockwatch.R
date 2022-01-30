@@ -8,14 +8,9 @@
 #' @export
 #'
 #' @examples
-#'
-#'
-#'
-#'
 #' percent_change("AAPL", "2017-01-01", "2017-01-10")
 
 percent_change <- function(stock_ticker, start_date, end_date){
-
   # Check if stock_ticker is valid in SP500 index
   sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
 
@@ -68,7 +63,7 @@ percent_change <- function(stock_ticker, start_date, end_date){
 
 #' Visualizes trend of a stock price change against the market benchmark within a given period of time
 #'
-#' @param stock_ticker A string Ticker of the stock such as 'AAPL'
+#' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
 #' @param benchmark_ticker A string Benchmark Ticker of the stock such as 'SPY'
@@ -80,8 +75,6 @@ percent_change <- function(stock_ticker, start_date, end_date){
 #'         profit_viz('AAPL', '2017-01-01', '2022-01-10','MSFT')
 #'
 profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
-
-
 
   profit_stock <-percent_change(stock_ticker, start_date, end_date)
 
@@ -112,16 +105,17 @@ profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
 
 #' Calculates the daily trading volume change status of a stock within a given period of time
 #'
-#' @param stock_ticker A string related to ticker of the stock or ETF
+#' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
-#'
+#' 
 #' @return A data frame with dates and their corresponding trading volume and changes
 #' @export
 #'
 #' @examples
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
+
 
   # Check if stock_ticker is valid in SP500 index
   sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
@@ -136,10 +130,12 @@ volume_change <- function(stock_ticker, start_date, end_date){
   }
   #
   #   # Check if date is in correct time format
+
   # start_date
   if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
     stop("Invalid start date! Start date should be in format yyyy-mm-dd")
   }
+
   #   # end_date
   if(is.na(as.Date(end_date, format = '%Y-%m-%d'))) {
     stop("Invalid end date! End date should be in format yyyy-mm-dd")
@@ -162,6 +158,7 @@ volume_change <- function(stock_ticker, start_date, end_date){
   return(data)
 }
 
+
 #' Visualizes the daily trading volume of a stock using bar plot within a given period of time
 #'
 #' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
@@ -175,6 +172,7 @@ volume_change <- function(stock_ticker, start_date, end_date){
 #'         volume_viz('AAPL', '2017-01-01', '2017-01-10')
 #'
 volume_viz <- function(stock_ticker, start_date, end_date){
+
   # Check input
   dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date),
                     error = return('Something wrong with input from volume_change function'))

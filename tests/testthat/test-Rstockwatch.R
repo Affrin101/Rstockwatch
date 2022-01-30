@@ -27,6 +27,15 @@ test_that("percent_change is numeric value", {
 # Test for checking output of profit viz
 results <- profit_viz(profit_viz("AAPL", "2017-01-01", "2022-01-10", "MSFT"))
 
+test_that("volume change returns a data frame with correct information", {
+    vdf <- volume_change('AAPL', '2017-01-01', '2017-01-10')
+    expect_true(is.data.frame(vdf))  # Input data should be dataframe
+    expect_true("date" %in% colnames(vdf))
+    expect_true("volume" %in% colnames(vdf))
+    expect_true("Price_change" %in% colnames(vdf))
+    unique(vdf[["Price_change"]]) %in% c(NA, "Increase", "Decrease")
+  })
+
 test_that('Plot should use GeomLine and map Date to x-axis and map value to y-axis ', {
   expect_true( "GeomLine" %in% class(results$layers[[1]]$geom))    # profit_viz should be line chart
   expect_true("Date" == rlang::get_expr(results$mapping$x))        # X axis should correspond to "Date"
