@@ -7,7 +7,7 @@
 volume_viz(stock_ticker, start_date, end_date)
 }
 \arguments{
-\item{stock_ticker}{A string related to ticker of the stock or ETF}
+\item{stock_ticker}{A string related to ticker of the stock or ETF, such as "AAPL"}
 
 \item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
 
@@ -21,4 +21,5 @@ Visualizes the daily trading volume of a stock using bar plot within a given per
 }
 \examples{
         volume_viz('AAPL', '2017-01-01', '2017-01-10')
+
 }

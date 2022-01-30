@@ -21,8 +21,8 @@ Calculates daily percentage change of a stock price within a given period of tim
 }
 \examples{
 
-library(tidyverse)
-library(tidyquant)
+
+
 
 percent_change("AAPL", "2017-01-01", "2017-01-10")
 }

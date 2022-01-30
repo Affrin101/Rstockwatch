@@ -1,6 +1,4 @@
 library(testthat)
 library(Rstockwatch)
-library(tidyverse)
-library(tidyquant)
-library(refresh2)
+
 test_check("Rstockwatch")

@@ -22,5 +22,6 @@ A line plot showing the profit percent trend of the stock price change against t
 Visualizes trend of a stock price change against the market benchmark within a given period of time
 }
 \examples{
-        profit_viz('AAPL', '2017-01-01', '2022-01-10','SPY')
+        profit_viz('AAPL', '2017-01-01', '2022-01-10','MSFT')
+
 }
