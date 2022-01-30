@@ -102,7 +102,7 @@ profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
 #' @param stock_ticker A string related to ticker of the stock or ETF, such as "AAPL"
 #' @param start_date A date in string format of "YYYY-MM-DD" related to start of data extraction
 #' @param end_date A date in string format of "YYYY-MM-DD" related to end of data extraction
-#' 
+#'
 #' @return A data frame with dates and their corresponding trading volume and changes
 #' @export
 #'
@@ -138,9 +138,9 @@ volume_change <- function(stock_ticker, start_date, end_date){
                  from = start_date,
                  to = end_date,
                  get = "stock.prices")  |>
-    mutate(adjusted.prior = lag(adjusted))  |>
-    mutate(Price_change = adjusted - adjusted.prior)  |>
-    mutate(Price_change = ifelse(Price_change > 0, "Increase", "Decrease")) |>
+    dplyr::mutate(adjusted.prior = lag(adjusted))  |>
+    dplyr::mutate(Price_change = adjusted - adjusted.prior)  |>
+    dplyr::mutate(Price_change = ifelse(Price_change > 0, "Increase", "Decrease")) |>
     dplyr::select(date, volume, Price_change)
 
   return(data)
