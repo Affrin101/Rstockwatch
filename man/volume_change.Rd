@@ -6,6 +6,19 @@
 \usage{
 volume_change(stock_ticker, start_date, end_date)
 }
+\arguments{
+\item{stock_ticker}{A string related to ticker of the stock or ETF}
+
+\item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
+
+\item{end_date}{A date in string format of "YYYY-MM-DD" related to end of data extraction}
+}
+\value{
+A data frame with dates and their corresponding trading volume and changes
+}
 \description{
 Calculates the daily trading volume change status of a stock within a given period of time
+}
+\examples{
+        volume_change('AAPL', '2017-01-01', '2017-01-10')
 }

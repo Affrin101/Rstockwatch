@@ -6,6 +6,23 @@
 \usage{
 percent_change(stock_ticker, start_date, end_date)
 }
+\arguments{
+\item{stock_ticker}{A string related to ticker of the stock or ETF, such as "AAPL"}
+
+\item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
+
+\item{end_date}{A date in string format of "YYYY-MM-DD" related to end of data extraction}
+}
+\value{
+A data frame with dates and their corresponding stock price percentage changes
+}
 \description{
 Calculates daily percentage change of a stock price within a given period of time
+}
+\examples{
+
+
+
+
+percent_change("AAPL", "2017-01-01", "2017-01-10")
 }

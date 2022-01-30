@@ -6,6 +6,22 @@
 \usage{
 profit_viz(stock_ticker, start_date, end_date, benchmark_ticker)
 }
+\arguments{
+\item{stock_ticker}{A string Ticker of the stock such as 'AAPL'}
+
+\item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
+
+\item{end_date}{A date in string format of "YYYY-MM-DD" related to end of data extraction}
+
+\item{benchmark_ticker}{A string Benchmark Ticker of the stock such as 'SPY'}
+}
+\value{
+A line plot showing the profit percent trend of the stock price change against the market benchmark within a given period of time
+}
 \description{
 Visualizes trend of a stock price change against the market benchmark within a given period of time
+}
+\examples{
+        profit_viz('AAPL', '2017-01-01', '2022-01-10','MSFT')
+
 }
