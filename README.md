@@ -73,8 +73,6 @@ Import the functions from package with following commands:
 
     profit_viz('AAPL', '2015-01-01', '2021-12-31', 'MSFT')
 
-![Profit
-visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png)
 
 ### To check daily trading volume change of a stock
 
@@ -83,9 +81,6 @@ visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_e
 ### To Visualize the volume change trend of a stock
 
     volume_viz('AAPL', '2021-01-01', 2021-12-31')
-
-![Volume
-visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png)
 
 ## Contributors
 
