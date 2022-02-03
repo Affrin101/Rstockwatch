@@ -4,6 +4,9 @@
 # Rstockwatch
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/UBC-MDS/Rstockwatch/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/Rstockwatch/actions)[![codecov](https://codecov.io/gh/UBC-MDS/Rstockwatch/branch/main/graph/badge.svg?token=ylGvMBscyC)](https://codecov.io/gh/UBC-MDS/Rstockwatch)
+
 <!-- badges: end -->
 
 The goal of Rstockwatch package is to provide a very simple interface
@@ -63,7 +66,7 @@ form of an plot based on “ggplot” package.
 
 Import the functions from package with following commands:
 
-    library(Rstockwatch)
+    library(rstockwatch)
 
 ### To check the Profit percent
 
@@ -71,8 +74,9 @@ Import the functions from package with following commands:
 
 ### To Visualize the profit percentage change trend of a stock against market benchmark
 
-    profit_viz('AAPL', '2015-01-01', '2021-12-31', 'MSFT')
+    profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SP500')
 
+<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png) -->
 
 ### To check daily trading volume change of a stock
 
@@ -82,12 +86,14 @@ Import the functions from package with following commands:
 
     volume_viz('AAPL', '2021-01-01', 2021-12-31')
 
+<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png) -->
+
 ## Contributors
 
 -   Affrin Sultana
 -   Helin Wang
 -   Pavel Levchenko
--   Shi Yan Wang.
+-   Shi Yan Wang
 
 We welcome and recognize all contributions. Check out the contributing
 guidelines. Please note that this project is released with a Code of
