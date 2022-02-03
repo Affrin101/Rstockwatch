@@ -1,9 +1,5 @@
 
 # Test for percent change function
-# Test input stock ticker
-test_that("Error of stock_ticker", {
-  expect_error(percent_change("ABCD", "2017-01-01", "2017-01-10"))
-})
 
 # Test start_date format
 test_that("Error of start_date format", {
