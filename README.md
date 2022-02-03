@@ -66,7 +66,7 @@ form of an plot based on “ggplot” package.
 
 Import the functions from package with following commands:
 
-    library(rstockwatch)
+    library(Rstockwatch)
 
 ### To check the Profit percent
 
@@ -74,7 +74,7 @@ Import the functions from package with following commands:
 
 ### To Visualize the profit percentage change trend of a stock against market benchmark
 
-    profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SP500')
+    profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
 
 <!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png) -->
 
@@ -105,13 +105,13 @@ terms.
 -   R Version 4.1 or above
 
     > tidyverse==1.3.1
-
+    
     > knitr==1.36
-
+    
     > testthat (>= 3.0.0)
-
+    
     > ggplot2 ==3.3.5
-
+    
     > tidyquant ==1.0.3
 
 ## License
