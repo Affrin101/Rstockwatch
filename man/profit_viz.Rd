@@ -7,7 +7,7 @@
 profit_viz(stock_ticker, start_date, end_date, benchmark_ticker)
 }
 \arguments{
-\item{stock_ticker}{A string Ticker of the stock such as 'AAPL'}
+\item{stock_ticker}{A string related to ticker of the stock or ETF, such as "AAPL"}
 
 \item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
 

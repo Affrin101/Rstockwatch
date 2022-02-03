@@ -7,7 +7,7 @@
 volume_change(stock_ticker, start_date, end_date)
 }
 \arguments{
-\item{stock_ticker}{A string related to ticker of the stock or ETF}
+\item{stock_ticker}{A string related to ticker of the stock or ETF, such as "AAPL"}
 
 \item{start_date}{A date in string format of "YYYY-MM-DD" related to start of data extraction}
 
