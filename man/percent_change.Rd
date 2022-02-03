@@ -20,9 +20,5 @@ A data frame with dates and their corresponding stock price percentage changes
 Calculates daily percentage change of a stock price within a given period of time
 }
 \examples{
-
-
-
-
 percent_change("AAPL", "2017-01-01", "2017-01-10")
 }
