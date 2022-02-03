@@ -10,16 +10,11 @@
 #' @examples
 #' percent_change("AAPL", "2017-01-01", "2017-01-10")
 percent_change <- function(stock_ticker, start_date, end_date){
-  # Check if stock_ticker is valid in SP500 index
-  sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
 
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
   }
 
-  if(!stock_ticker %in% sp500_tickers_list) {
-    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
-  }
   # Check start date
   if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
 		stop("Invalid start date! Start date should be in format yyyy-mm-dd")
@@ -109,17 +104,11 @@ profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
 #' @examples
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
-
-  # Check if stock_ticker is valid in SP500 index
-  tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
   
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
   }
 
-  if(!stock_ticker %in% tickers_list) {
-    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
-  }
   # Check time format
   # Start_date
   if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
