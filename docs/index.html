@@ -4,61 +4,63 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Main idea of the package is to provide a very simple interface for checking movements in stock prices in comparison to the market. This will be implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, such as SP500 or NASDAQ. As a result of data processing with pystockwatch package, user will be able to see a plot with two lines showing percentage change since the start date and volumes of trading">
 <title>Make simple visualization of stock data • Rstockwatch</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Make simple visualization of stock data">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Make simple visualization of stock data">
 <meta property="og:description" content="Main idea of the package is to provide a very simple interface for checking movements in stock prices in comparison to the market. This will be implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, such as SP500 or NASDAQ. As a result of data processing with pystockwatch package, user will be able to see a plot with two lines showing percentage change since the start date and volumes of trading">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">Rstockwatch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">Rstockwatch</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="reference/index.html">Reference</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/my-vignette.html">How To Use rstockwatch Package</a>
+  </div>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav"></ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div class="section level1">
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="rstockwatch">Rstockwatch<a class="anchor" aria-label="anchor" href="#rstockwatch"></a>
 </h1></div>
 <!-- badges: start -->
+
 <!-- badges: end -->
 <p>The goal of Rstockwatch package is to provide a very simple interface for checking movements in stock prices in comparison to the market. This is implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, such as SP500 or NASDAQ. As a result of data processing with Rstockwatch package, user will be able to see a plot with two lines showing percentage change since the start date and volumes of trading.</p>
 <div class="section level2">
@@ -73,7 +75,7 @@
 <div class="section level2">
 <h2 id="comparison-with-similar-packages-in-r-ecosystem">Comparison with similar packages in R Ecosystem<a class="anchor" aria-label="anchor" href="#comparison-with-similar-packages-in-r-ecosystem"></a>
 </h2>
-<p>There are many packages written for analysis of stock data. One of relevant R package in this category is <a href="https://github.com/UBC-MDS/stockAnalyzer" class="external-link">stockAnalyzer</a>, which allows a lot of manipulations with time series data, such as creating moving averages or calculating other parameters for technical analysis. Power of <code>Rstockwatch</code> is in its simplicity, so users are not overwhelmed with all extra features and just have a simple view with key comparisons for a stock of interest</p>
+<p>There are many packages written for analysis of stock data. One of relevant R package in this category is <a href="https://cran.r-project.org/web/packages/quantmod" class="external-link">quantmod</a>, which allows a lot of manipulations with time series data, such as creating moving averages or calculating other parameters for technical analysis. Power of <code>Rstockwatch</code> is in its simplicity, so users are not overwhelmed with all extra features and just have a simple view with key comparisons for a stock of interest</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -84,14 +86,43 @@
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"UBC-MDS/Rstockwatch"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="usage-and-example">Usage and Example<a class="anchor" aria-label="anchor" href="#usage-and-example"></a>
 </h2>
-<p>Usage clarification will be updated after completion of all functions. In general, after installation of this package user will be required to input four parameters: stock_ticker, start_date, end_date and benchmark_ticker. Output results are in form of an plot based on “ggplot” package. <img src="https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.PNG" alt="Volume visualization"></p>
+<p>After the successful installation of this package user are recommend to restart the R session to update any dependencies packages. The functions in this package require input four parameters: <code>stock_ticker</code>, <code>start_date</code>, <code>end_date</code> and <code>benchmark_ticker</code>. Output results are in form of an plot based on “ggplot” package.</p>
+<p>Import the functions from package with following commands:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rstockwatch)</span></code></pre></div>
+<div class="section level3">
+<h3 id="to-check-the-profit-percent">To check the Profit percent<a class="anchor" aria-label="anchor" href="#to-check-the-profit-percent"></a>
+</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2017-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="to-visualize-the-profit-percentage-change-trend-of-a-stock-against-market-benchmark">To Visualize the profit percentage change trend of a stock against market benchmark<a class="anchor" aria-label="anchor" href="#to-visualize-the-profit-percentage-change-trend-of-a-stock-against-market-benchmark"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">profit_viz</span>(<span class="st">'AAPL'</span>, <span class="st">'2015-01-01'</span>, <span class="st">'2021-12-31'</span>, <span class="st">'SPY'</span>)</span></code></pre></div>
+<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png) -->
+</div>
+<div class="section level3">
+<h3 id="to-check-daily-trading-volume-change-of-a-stock">To check daily trading volume change of a stock<a class="anchor" aria-label="anchor" href="#to-check-daily-trading-volume-change-of-a-stock"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="to-visualize-the-volume-change-trend-of-a-stock">To Visualize the volume change trend of a stock<a class="anchor" aria-label="anchor" href="#to-visualize-the-volume-change-trend-of-a-stock"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_viz</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
+<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png) -->
+</div>
 </div>
 <div class="section level2">
 <h2 id="contributors">Contributors<a class="anchor" aria-label="anchor" href="#contributors"></a>
 </h2>
-<p>Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang.</p>
+<ul>
+<li>Affrin Sultana</li>
+<li>Helin Wang</li>
+<li>Pavel Levchenko</li>
+<li>Shi Yan Wang</li>
+</ul>
 <p>We welcome and recognize all contributions. Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 <div class="section level2">
@@ -124,10 +155,7 @@
 <p><code>Rstockwatch</code> was created by Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang. It is licensed under the terms of the MIT license.</p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
+  </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -160,27 +188,32 @@
 </ul>
 </div>
 
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/UBC-MDS/Rstockwatch/actions" class="external-link"><img src="https://github.com/UBC-MDS/Rstockwatch/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/UBC-MDS/Rstockwatch" class="external-link"><img src="https://codecov.io/gh/UBC-MDS/Rstockwatch/branch/main/graph/badge.svg?token=ylGvMBscyC" alt="codecov"></a></li>
+</ul>
+</div>
 
-
-  </div>
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 
