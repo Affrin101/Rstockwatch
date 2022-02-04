@@ -11,7 +11,7 @@
 #' percent_change("AAPL", "2017-01-01", "2017-01-10")
 percent_change <- function(stock_ticker, start_date, end_date){
   # Check if stock_ticker is valid in SP500 index
-  sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
+  sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol, "SPY")
 
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
@@ -111,7 +111,7 @@ profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
 volume_change <- function(stock_ticker, start_date, end_date){
 
   # Check if stock_ticker is valid in SP500 index
-  sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol)
+  sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol, "SPY")
 
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
