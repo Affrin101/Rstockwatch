@@ -24,5 +24,4 @@ Imports:
     readxl,
     reshape2,
     dplyr,
-    rlang,
     covr
