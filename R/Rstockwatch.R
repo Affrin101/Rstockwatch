@@ -10,16 +10,16 @@
 #' @examples
 #' percent_change("AAPL", "2017-01-01", "2017-01-10")
 percent_change <- function(stock_ticker, start_date, end_date){
+<<<<<<< HEAD
   # Check if stock_ticker is valid in SP500 index
   sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol, "SPY")
+=======
+>>>>>>> e58a1331482207cb2f5246ce1715f1e8ea455eee
 
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
   }
 
-  if(!stock_ticker %in% sp500_tickers_list) {
-    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
-  }
   # Check start date
   if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
 		stop("Invalid start date! Start date should be in format yyyy-mm-dd")
@@ -109,17 +109,18 @@ profit_viz <- function(stock_ticker, start_date , end_date, benchmark_ticker){
 #' @examples
 #'         volume_change('AAPL', '2017-01-01', '2017-01-10')
 volume_change <- function(stock_ticker, start_date, end_date){
+<<<<<<< HEAD
 
   # Check if stock_ticker is valid in SP500 index
   sp500_tickers_list <- c(tidyquant::tq_index("SP500")$symbol, "SPY")
 
+=======
+  
+>>>>>>> e58a1331482207cb2f5246ce1715f1e8ea455eee
   if(stringr::str_detect(stock_ticker, "[[:upper:]]") == FALSE){
     stock_ticker <- toupper(stock_ticker)
   }
 
-  if(!stock_ticker %in% sp500_tickers_list) {
-    stop("Invalid stock_ticker! Try a different one. All letters should be either all in upper case or all in lower case")
-  }
   # Check time format
   # Start_date
   if(is.na(as.Date(start_date, format = '%Y-%m-%d'))) {
@@ -138,12 +139,11 @@ volume_change <- function(stock_ticker, start_date, end_date){
                  from = start_date,
                  to = end_date,
                  get = "stock.prices")  |>
-    dplyr::mutate(adjusted.prior = lag(adjusted))  |>
-    dplyr::mutate(Price_change = adjusted - adjusted.prior)  |>
-    dplyr::mutate(Price_change = ifelse(Price_change > 0, "Increase", "Decrease")) |>
+    dplyr::mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
     dplyr::select(date, volume, Price_change)
 
   return(data)
+ 
 }
 
 #' Visualizes the daily trading volume of a stock using bar plot within a given period of time
@@ -161,8 +161,8 @@ volume_change <- function(stock_ticker, start_date, end_date){
 volume_viz <- function(stock_ticker, start_date, end_date){
 
   # Check input
-  dfout <- tryCatch(volume_change(stock_ticker, start_date, end_date),
-                    error = return('Something wrong with input from volume_change function'))
+  dfout <- volume_change(stock_ticker, start_date, end_date)
+
   if(!is.numeric(dfout$volume)) {
     stop("Volume data should be numeric")}
 
