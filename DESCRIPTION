@@ -27,5 +27,6 @@ Imports:
     readxl,
     reshape2,
     dplyr,
-    rlang
+    rlang,
+    covr
 VignetteBuilder: knitr
