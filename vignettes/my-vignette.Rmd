@@ -39,7 +39,7 @@ You can install the development version from GitHub with (remove comment sign # 
 
 ```{r setup}
 # install.packages("devtools")
-# devtools::install_github("UBC-MDS/Rstockwatch")
+ devtools::install_github("UBC-MDS/Rstockwatch")
 ```
 
 ## Usage and Example
