@@ -24,4 +24,5 @@ Imports:
     tidyquant,
     readxl,
     reshape2,
-    dplyr
+    dplyr,
+    rlang
