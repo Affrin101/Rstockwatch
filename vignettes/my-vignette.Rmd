@@ -1,0 +1,80 @@
+---
+title: "How to use rstockwatch"
+author: "Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+`rstockwatch` package has been created to provide a very simple interface for checking movements in stock prices in comparison to the market. This is implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, like `SP500`. As a result of data processing with rstockwatch package, users will be able to generate two plots: one with two lines showing percentage change in profit since the start date and volumes of trading and another related to daily change in the volume of stock trades as shown at examples below.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Functions description
+
+This package is built with following four functions:
+
+- `percent_change` Calculation of profit percentage change of a stock for a given period of time based on data extracted from Yahoo finance.
+
+- `profit_viz` Visualization of profit percentage change trend of a stock against market benchmark for a given period of time. Note that during weekends and public holidays, stock market has no data available, this is handled in plotting as well
+
+- `volume_change` Calculation of daily trading volume change of a stock, whether it is increasing or decreasing. This data is used in next function for color mapping of bar plot.
+
+- `volume_viz` Visualization of trading volume as bar plots colored by changes in volume in comparison with previous day. This plot is overlayed with line plots created with the second function. . Note that during weekends and public holidays, stock market has no data available, this is handled in plotting as well
+
+## Comparison with similar packages in R Ecosystem
+
+There are many packages written for analysis of stock data. One of relevant R package in this category is `stockAnalyzer`, which allows a lot of manipulations with time series data, such as creating moving averages or calculating other parameters for technical analysis. Power of `Rstockwatch` is in its simplicity, so users are not overwhelmed with all extra features and just have a simple view with key comparisons for a stock of interest.
+
+## Installation
+
+You can install the development version from GitHub with:
+
+```{r setup}
+# install.packages("devtools")
+# devtools::install_github("UBC-MDS/Rstockwatch")
+```
+
+## Usage and Example
+
+After the successful installation of this package user are recommend to restart the R session to update any dependencies packages. The functions in this package require input four parameters: `stock_ticker`, `start_date`, `end_date` and `benchmark_ticker`. Output results are in form of an plot based on “ggplot” package.
+
+Import the functions from package with following commands:
+
+```{r setup_library}
+library(Rstockwatch)
+```
+
+# To check the profit percent
+
+```{r percent_change}
+percent_change('AAPL', '2015-01-01', '2021-12-31')
+```
+
+# To visualize the profit percentage change trend of a stock against stock market benchmark
+
+```{r profit_viz}
+profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
+```
+
+# To check daily trading volume change of a stock
+
+```{r volume_change}
+volume_change('AAPL', '2021-01-01', '2021-12-31')
+```
+
+# To visualize the volume change trend of a stock
+
+```{r volume_viz}
+volume_viz('AAPL', '2021-01-01', '2021-12-31')
+```
+
+
+
