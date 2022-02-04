@@ -76,5 +76,32 @@ volume_change('AAPL', '2021-01-01', '2021-12-31')
 volume_viz('AAPL', '2021-01-01', '2021-12-31')
 ```
 
+## Contributors
+
+- Affrin Sultana
+
+- Helin Wang
+
+- Pavel Levchenko
+
+- Shi Yan Wang
+
+We welcome and recognize all contributions. Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+
+## Dependencies
+
+R Version 4.1 or above
+
+  > tidyverse==1.3.1
+    
+    > knitr==1.36
+    
+    > testthat (>= 3.0.0)
+    
+    > ggplot2 ==3.3.5
+	
+	  > tidyquant ==1.0.3
+
+
 
 
