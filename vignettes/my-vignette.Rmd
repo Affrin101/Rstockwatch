@@ -41,3 +41,38 @@ You can install the development version from GitHub with:
 # install.packages("devtools")
 # devtools::install_github("UBC-MDS/Rstockwatch")
 ```
+
+## Usage and Example
+
+After the successful installation of this package user are recommend to restart the R session to update any dependencies packages. The functions in this package require input four parameters: `stock_ticker`, `start_date`, `end_date` and `benchmark_ticker`. Output results are in form of an plot based on “ggplot” package.
+
+Import the functions from package with following commands:
+
+```{r setup_library}
+library(Rstockwatch)
+```
+
+**1. To check the profit percent**
+
+```{r percent_change}
+percent_change('AAPL', '2015-01-01', '2021-12-31')
+```
+
+**2. To visualize the profit percentage change trend of a stock against stock market benchmark**
+
+```{r profit_viz}
+profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
+```
+
+**3. To check daily trading volume change of a stock**
+
+```{r volume_change}
+volume_change('AAPL', '2021-01-01', '2021-12-31')
+```
+
+**4. To visualize the volume change trend of a stock**
+
+```{r volume_viz}
+volume_viz('AAPL', '2021-01-01', '2021-12-31')
+```
+
