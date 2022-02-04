@@ -52,7 +52,7 @@ Import the functions from package with following commands:
 library(Rstockwatch)
 ```
 
-# To check the profit percent
+**To check the profit percent**
 
 ```{r percent_change}
 percent_change('AAPL', '2015-01-01', '2021-12-31')
@@ -92,15 +92,15 @@ We welcome and recognize all contributions. Check out the contributing guideline
 
 R Version 4.1 or above
 
-  > tidyverse==1.3.1
+> tidyverse==1.3.1
+
+> knitr==1.36
     
-    > knitr==1.36
+> testthat (>= 3.0.0)
     
-    > testthat (>= 3.0.0)
-    
-    > ggplot2 ==3.3.5
+> ggplot2 ==3.3.5
 	
-	  > tidyquant ==1.0.3
+> tidyquant ==1.0.3
 
 
 
