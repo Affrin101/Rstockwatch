@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2022 Rstockwatch authors
+Copyright (c) 2022 Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
