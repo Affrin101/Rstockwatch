@@ -70,7 +70,7 @@ Import the functions from package with following commands:
 
 ### To check the Profit percent
 
-    percent_change('AAPL', '2017-01-01', 2021-12-31')
+    percent_change('AAPL', '2017-01-01', '2021-12-31')
 
 ### To Visualize the profit percentage change trend of a stock against market benchmark
 
@@ -81,11 +81,11 @@ visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/p
 
 ### To check daily trading volume change of a stock
 
-    volume_change('AAPL', '2021-01-01', 2021-12-31')
+    volume_change('AAPL', '2021-01-01', '2021-12-31')
 
 ### To Visualize the volume change trend of a stock
 
-    volume_viz('AAPL', '2021-01-01', 2021-12-31')
+    volume_viz('AAPL', '2021-01-01', '2021-12-31')
 
 ![Volume
 visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png)
