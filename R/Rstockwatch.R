@@ -127,9 +127,7 @@ volume_change <- function(stock_ticker, start_date, end_date){
                  from = start_date,
                  to = end_date,
                  get = "stock.prices")  |>
-    dplyr::mutate(adjusted.prior = lag(adjusted))  |>
-    dplyr::mutate(Price_change = adjusted - adjusted.prior)  |>
-    dplyr::mutate(Price_change = ifelse(Price_change > 0, "Increase", "Decrease")) |>
+    dplyr::mutate(Price_change=ifelse(c(0,diff(close))<0,"Decrease","Increase")) |>
     dplyr::select(date, volume, Price_change)
 
   return(data)
