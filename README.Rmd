@@ -3,7 +3,7 @@ output: github_document
 authors : Affrin Sultana, Helin Wang, Shi Yan Wang, Pavel Levchenko 
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -67,7 +67,7 @@ percent_change('AAPL', '2017-01-01', 2021-12-31')
 profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
 
 ```
-<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png) -->
+![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png)
 
 ### To check daily trading volume change of a stock
 
@@ -80,7 +80,11 @@ volume_change('AAPL', '2021-01-01', 2021-12-31')
 volume_viz('AAPL', '2021-01-01', 2021-12-31')
 
 ```
-<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png) -->
+![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png)
+
+## Documentation
+
+A more detailed information about our package can found seen on the vignette [here](https://ubc-mds.github.io/Rstockwatch/articles/my-vignette.html)
 
 ## Contributors
 

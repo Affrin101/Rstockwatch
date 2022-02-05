@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd file -->
 
 # Rstockwatch
 
@@ -66,27 +66,35 @@ form of an plot based on “ggplot” package.
 
 Import the functions from package with following commands:
 
-    library(Rstockwatch)
+    library(rstockwatch)
 
 ### To check the Profit percent
 
-    percent_change('AAPL', '2017-01-01', '2021-12-31')
+    percent_change('AAPL', '2017-01-01', 2021-12-31')
 
 ### To Visualize the profit percentage change trend of a stock against market benchmark
 
     profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
 
-<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png) -->
+![Profit
+visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png)
 
 ### To check daily trading volume change of a stock
 
-    volume_change('AAPL', '2021-01-01', '2021-12-31')
+    volume_change('AAPL', '2021-01-01', 2021-12-31')
 
 ### To Visualize the volume change trend of a stock
 
-    volume_viz('AAPL', '2021-01-01', '2021-12-31')
+    volume_viz('AAPL', '2021-01-01', 2021-12-31')
 
-<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png) -->
+![Volume
+visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png)
+
+## Documentation
+
+A more detailed information about our package can found seen on the
+vignette
+[here](https://ubc-mds.github.io/Rstockwatch/articles/my-vignette.html)
 
 ## Contributors
 
@@ -105,13 +113,13 @@ terms.
 -   R Version 4.1 or above
 
     > tidyverse==1.3.1
-    
+
     > knitr==1.36
-    
+
     > testthat (>= 3.0.0)
-    
+
     > ggplot2 ==3.3.5
-    
+
     > tidyquant ==1.0.3
 
 ## License
