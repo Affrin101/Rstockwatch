@@ -66,7 +66,7 @@ form of an plot based on “ggplot” package.
 
 Import the functions from package with following commands:
 
-    library(rstockwatch)
+    library(Rstockwatch)
 
 ### To check the Profit percent
 
