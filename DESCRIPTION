@@ -2,13 +2,11 @@ Package: Rstockwatch
 Title: Make simple visualization of stock data
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Affrin", "Sultana", role = c("aut", "cre")), 
-	person("Helin", "Wang", role = c("aut", "cre")), 
-	person("Pavel", "Levchenko", role = c("aut", "cre")), 
-	person("Shi Yan", "Wang", role = c("aut", "cre"))
+    person("Affrin", "Sultana", , "affrin.sultana7@gmail.com", role = c("aut")), 
+	person("Helin", "Wang", , "helingogo@gmail.com", role = c("aut")), 
+	person("Pavel", "Levchenko", , "plevchenko@gmail.com", role = c("aut")), 
+	person("Shi Yan", "Wang", , "shiyan@gmail.com", role = c("aut", "cre"))
 	)
-Author: Affrin Sultana [aut, cre], Helin Wang [aut, cre],Pavel Levchenko [aut, cre], Shi Yan Wang [aut, cre]
-Maintainer: Affrin Sultana <affrin@example.net>, Helin Wang <helin@example.net>, Pavel Levchenko <pavel@example.net>, Shi Yan Wang <shiyan@example.net>
 Description: Main idea of the package is to provide a very simple interface for checking movements in stock prices in comparison to the market. This will be implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, such as SP500 or NASDAQ. As a result of data processing with pystockwatch package, user will be able to see a plot with two lines showing percentage change since the start date and volumes of trading
 License: MIT + file LICENSE
 Encoding: UTF-8
