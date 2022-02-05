@@ -1,6 +1,6 @@
 ---
 output: github_document
-authors : Affrin Sultana, Helina Wang, shi Yan Wang, Pavel Lvenchenko 
+authors : Affrin Sultana, Helin Wang, Shi Yan Wang, Pavel Levchenko 
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -64,10 +64,10 @@ percent_change('AAPL', '2017-01-01', 2021-12-31')
 ### To Visualize the profit percentage change trend of a stock against market benchmark
 
 ```
-profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SP500')
+profit_viz('AAPL', '2015-01-01', '2021-12-31', 'SPY')
 
 ```
-<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png) -->
+<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png) -->
 
 ### To check daily trading volume change of a stock
 
@@ -80,7 +80,7 @@ volume_change('AAPL', '2021-01-01', 2021-12-31')
 volume_viz('AAPL', '2021-01-01', 2021-12-31')
 
 ```
-<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png) -->
+<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png) -->
 
 ## Contributors
 

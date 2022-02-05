@@ -26,5 +26,6 @@ Imports:
     reshape2,
     dplyr,
     rlang,
-    covr
+    covr,
+    qpdf
 VignetteBuilder: knitr
