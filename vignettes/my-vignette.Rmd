@@ -1,5 +1,5 @@
 ---
-title: "How To Use rstockwatch Package"
+title: "How To Use Rstockwatch Package"
 author: "Affrin Sultana, Helin Wang, Pavel Levchenko, Shi Yan Wang"
 output: rmarkdown::html_vignette
 vignette: >
@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-`rstockwatch` package has been created to provide a very simple interface for checking movements in stock prices in comparison to the market. This is implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, like `SP500`. As a result of data processing with rstockwatch package, users will be able to generate two plots: one with two lines showing percentage change in profit since the start date and volumes of trading and another related to daily change in the volume of stock trades as shown at examples below.
+`Rstockwatch` package has been created to provide a very simple interface for checking movements in stock prices in comparison to the market. This is implemented by accessing public data from Yahoo Finance by selecting a ticker of the stock, range of start and end dates and benchmark for comparison, like `SP500`. As a result of data processing with rstockwatch package, users will be able to generate two plots: one with two lines showing percentage change in profit since the start date and volumes of trading and another related to daily change in the volume of stock trades as shown at examples below.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(

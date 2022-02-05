@@ -41,7 +41,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/my-vignette.html">How To Use rstockwatch Package</a>
+    <a class="dropdown-item" href="articles/my-vignette.html">How To Use Rstockwatch Package</a>
   </div>
 </li>
       </ul>
@@ -90,29 +90,38 @@
 </h2>
 <p>After the successful installation of this package user are recommend to restart the R session to update any dependencies packages. The functions in this package require input four parameters: <code>stock_ticker</code>, <code>start_date</code>, <code>end_date</code> and <code>benchmark_ticker</code>. Output results are in form of an plot based on “ggplot” package.</p>
 <p>Import the functions from package with following commands:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rstockwatch)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstockwatch)</span></code></pre></div>
 <div class="section level3">
 <h3 id="to-check-the-profit-percent">To check the Profit percent<a class="anchor" aria-label="anchor" href="#to-check-the-profit-percent"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2017-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2017-01-01'</span>, <span class="dv">2021-12-31</span><span class="st">')</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="to-visualize-the-profit-percentage-change-trend-of-a-stock-against-market-benchmark">To Visualize the profit percentage change trend of a stock against market benchmark<a class="anchor" aria-label="anchor" href="#to-visualize-the-profit-percentage-change-trend-of-a-stock-against-market-benchmark"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">profit_viz</span>(<span class="st">'AAPL'</span>, <span class="st">'2015-01-01'</span>, <span class="st">'2021-12-31'</span>, <span class="st">'SPY'</span>)</span></code></pre></div>
-<!-- ![Profit visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/percent_change_example.png) -->
+<div class="figure">
+<img src="https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/profit_viz-1.png" alt=""><p class="caption">Profit visualization</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="to-check-daily-trading-volume-change-of-a-stock">To check daily trading volume change of a stock<a class="anchor" aria-label="anchor" href="#to-check-daily-trading-volume-change-of-a-stock"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_change</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="dv">2021-12-31</span><span class="st">')</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="to-visualize-the-volume-change-trend-of-a-stock">To Visualize the volume change trend of a stock<a class="anchor" aria-label="anchor" href="#to-visualize-the-volume-change-trend-of-a-stock"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_viz</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="st">'2021-12-31'</span>)</span></code></pre></div>
-<!-- ![Volume visualization](https://github.com/UBC-MDS/Rstockwatch/blob/main/volume_plot_example.png) -->
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_viz</span>(<span class="st">'AAPL'</span>, <span class="st">'2021-01-01'</span>, <span class="dv">2021-12-31</span><span class="st">')</span></span></code></pre></div>
+<div class="figure">
+<img src="https://github.com/UBC-MDS/Rstockwatch/blob/main/docs/reference/volume_viz-1.png" alt=""><p class="caption">Volume visualization</p>
 </div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>A more detailed information about our package can found seen on the vignette <a href="https://ubc-mds.github.io/Rstockwatch/articles/my-vignette.html" class="external-link">here</a></p>
 </div>
 <div class="section level2">
 <h2 id="contributors">Contributors<a class="anchor" aria-label="anchor" href="#contributors"></a>
@@ -181,9 +190,9 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Affrin Sultana <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Helin Wang <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Pavel Levchenko <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Affrin Sultana <br><small class="roles"> Author </small>  </li>
+<li>Helin Wang <br><small class="roles"> Author </small>  </li>
+<li>Pavel Levchenko <br><small class="roles"> Author </small>  </li>
 <li>Shi Yan Wang <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
